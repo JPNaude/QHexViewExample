@@ -6,9 +6,12 @@ The is a clone of the [QHexView libary](http://code.google.com/p/qhexview/) alon
 Usage
 -----
 
+QHexView will be compiled into a library and placed under /lib. The example application links against this library and loads the contents of the example's executable on startup.
+
 ```
 qmake -o Makefile qhexview.pro
 make
 ```
 
-Open the QHexView.pro file in Qt Creator and just run it. QHexView will be compiled into a library and placed under /lib. The example links against this library and loads the contents of the example's executable on startup.
+Alteratively, open the QHexView.pro file in Qt Creator and just run it. 
+
