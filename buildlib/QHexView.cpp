@@ -685,6 +685,7 @@ void QHexView::mouseDoubleClickEvent(QMouseEvent *event) {
             selection_start_ = byte_offset;
             selection_end_ = selection_start_ + word_width_;
             repaint();
+            emit selectionChanged();
         }
     }
 }
@@ -717,6 +718,7 @@ void QHexView::mousePressEvent(QMouseEvent *event) {
             selection_start_ = selection_end_ = -1;
         }
         repaint();
+        emit selectionChanged();
     }
 }
 
@@ -765,6 +767,9 @@ void QHexView::mouseMoveEvent(QMouseEvent *event) {
 void QHexView::mouseReleaseEvent(QMouseEvent *event) {
     if(event->button() == Qt::LeftButton) {
         highlighting_ = Highlighting_None;
+        selection_start_ = -1;
+        selection_end_   = -1;
+        emit selectionChanged();
     }
 }
 
@@ -1167,6 +1172,9 @@ void QHexView::paintEvent(QPaintEvent *) {
 void QHexView::selectAll() {
     selection_start_ = 0;
     selection_end_   = dataSize();
+    updateScrollbars();
+    repaint();
+    emit selectionChanged();
 }
 
 //------------------------------------------------------------------------------
@@ -1175,6 +1183,9 @@ void QHexView::selectAll() {
 void QHexView::deselect() {
     selection_start_ = -1;
     selection_end_   = -1;
+    updateScrollbars();
+    repaint();
+    emit selectionChanged();
 }
 
 //------------------------------------------------------------------------------

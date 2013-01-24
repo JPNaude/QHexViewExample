@@ -146,6 +146,10 @@ private:
     QString formatAddress(address_t address);
     QString format_bytes(const QByteArray &row_data, int index) const;
 
+signals:
+    //! Signal that is emitted when the selection changed.
+    void selectionChanged();
+
 private:
     address_t origin_;
     address_t address_offset_; // this is the offset that our base address is relative to
