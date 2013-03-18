@@ -13,7 +13,7 @@ This file can be used under one of two licenses.
 The license chosen is at the discretion of the user of this software.
 */
 
-#include "qhexview.h"
+#include "QHexView.h"
 
 #include <QApplication>
 #include <QBuffer>
